@@ -56,7 +56,7 @@ class zookeeper (
   String                                     $systemd_unit_after               = $zookeeper::params::systemd_unit_after,
   String                                     $systemd_path                     = $zookeeper::params::systemd_path,
   String                                     $zk_dir                           = $zookeeper::params::zk_dir,
-  Array[String]                              $environment_vars                 = $zookeeper::params::environment_vars
+  Array[String]                              $systemd_environment_vars         = $zookeeper::params::systemd_environment_vars
   # zookeeper config
   String                                     $cfg_dir                          = $zookeeper::params::cfg_dir,
   String                                     $cleanup_sh                       = $zookeeper::params::cleanup_sh,
