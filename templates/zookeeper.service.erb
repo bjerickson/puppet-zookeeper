@@ -11,6 +11,11 @@ After=<%= scope.lookupvar("zookeeper::systemd_unit_after") %>
 <% end -%>
 
 [Service]
+<%if ! [nil, :undefined, :undef].include?(scope.lookupvar("zookeeper::systemd_environment_vars")) -%>
+<% scope.lookupvar("zookeeper::systemd_environment_vars").each do |var| %>
+Environment=<%= var %>
+<% end -%>
+<% end -%>
 ExecStart=/bin/bash -c 'set -x; \
   . <%= scope.lookupvar("zookeeper::cfg_dir") %>/<%= scope.lookupvar("zookeeper::environment_file") %>; \
   CLASSPATH="<%= @_zoo_dir %>/zookeeper<% if scope.lookupvar('zookeeper::install_method') == 'archive' -%>-<%= scope.lookupvar("zookeeper::archive_version") %><% end -%>.jar:<%= @_zoo_dir %>/lib/*:$CLASSPATH"; \
