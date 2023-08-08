@@ -116,7 +116,7 @@ class zookeeper::params {
   $service_ensure = 'running'
   $service_name = $_params['service_name']
   $service_provider = $_params['service_provider']
-  $systemd_environment_vars = undef
+  $systemd_environment_vars = []
   # systemd_unit_want and _after can be overridden to
   # donate the matching directives in the [Unit] section
   $systemd_unit_want = undef
